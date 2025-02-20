@@ -1,0 +1,8 @@
+<ion-searchbar
+  (ionInput)="onSearchInput($event)"
+  (ionClear)="clearSearch()"
+  debounce="500"
+  placeholder="Buscar ubicación..."
+></ion-searchbar>
+
+<div #mapNode style="height: 300px; width: 100%"></div>
