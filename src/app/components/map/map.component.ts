@@ -29,7 +29,6 @@ export class MapComponent implements AfterViewInit {
   ref = computed(() => this.mapNode()?.nativeElement);
   defaultLat = signal<number>(-34.635611);
   defaultLng = signal<number>(-58.364264);
-  onGeo = signal<boolean>(false);
 
   ngAfterViewInit(): void {
     const ref = this.ref();
@@ -63,8 +62,7 @@ export class MapComponent implements AfterViewInit {
 
       setTimeout(() => this.refreshMap(), 500);
       window.addEventListener('resize', () => this.refreshMap());
-      const onGeo = this.onGeo();
-      if (navigator.geolocation && onGeo) {
+      if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const { latitude, longitude } = position.coords;
